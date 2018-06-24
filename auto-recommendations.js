@@ -3,7 +3,7 @@
 // @namespace    https://gist.github.com/Henxed/3799a8d187dd3e36a3a51cbc1ae498c7
 // @version      0.1
 // @description  Переходи сюды https://store.steampowered.com/explore и нажимаем "Обмануть очередь"
-// @author       Перевел Henxed
+// @author       Перевел и доработал Henxed
 // @match        https://store.steampowered.com/explore
 // @grant        none
 // ==/UserScript==
