@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         Автопрокрутка рекомендуемых
-// @namespace    https://gist.github.com/Henxed/3799a8d187dd3e36a3a51cbc1ae498c7
+// @namespace    https://github.com/Henxed/auto-recommend-steam
 // @version      0.1.1
-// @downloadURL	 https://gist.githubusercontent.com/Henxed/3799a8d187dd3e36a3a51cbc1ae498c7/raw/d5e9c6b9fc28ed2ddb6094f0c98754b91adc9a12/auto-recommendations.js
+// @downloadURL	 https://raw.githubusercontent.com/Henxed/auto-recommend-steam/master/auto-recommendations.js
 // @description  Переходи сюды https://store.steampowered.com/explore и нажимаем "Обмануть очередь"
 // @author       Перевел и доработал Henxed
 // @match        https://store.steampowered.com/explore
-// @run-at		 document-start|document-end
+// @run-at       document-start|document-end
 // @grant        none
 // ==/UserScript==
 (function() {
