@@ -2,8 +2,8 @@
 // @name            Автопрокрутка рекомендуемых
 // @namespace       https://github.com/Henxed/auto-recommend-steam
 // @version         0.1.1
-// @downloadURL     https://raw.githubusercontent.com/Henxed/auto-recommend-steam/master/auto-recommendations.js
-// @updateURL       https://raw.githubusercontent.com/Henxed/auto-recommend-steam/master/auto-recommendations.js
+// @downloadURL     https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend.user.js
+// @updateURL       https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend.user.js
 // @description     Переходи сюды https://store.steampowered.com/explore и нажимаем "Обмануть очередь"
 // @author          Перевел и доработал Henxed
 // @match           https://store.steampowered.com/explore
