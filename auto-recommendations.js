@@ -10,40 +10,24 @@
 (function() {
     'use strict';
 
-    var DiscoveryQueueModal, GenerateQueue = function(queueNumber)
+    var DiscoveryQueueModal, GenerateQueue = function(queueNumber){
 
-    {
-
-        if (DiscoveryQueueModal)
-
-        {
-
+        if (DiscoveryQueueModal){
             DiscoveryQueueModal.Dismiss();
-
         }
 
-
-
         DiscoveryQueueModal = ShowBlockingWaitDialog('Создание списка...', 'Просмотр рекомендуемых #' + ++queueNumber);
-
-
 
         jQuery.post('https://store.steampowered.com/explore/generatenewdiscoveryqueue', {
             sessionid: g_sessionID,
             queuetype: 0
-        }).done(function(data)
-
-            {
+        }).done(function(data){
 
                 var requests = [],
                     done = 0,
                     errorShown;
 
-
-
-                for (var i = 0; i < data.queue.length; i++)
-
-                {
+                for (var i = 0; i < data.queue.length; i++){
 
                     var request = jQuery.post('https://store.steampowered.com/app/10', {
                         appid_to_clear_from_queue: data.queue[i],
@@ -52,19 +36,11 @@
 
 
 
-                    request.done(function()
+                    request.done(function(){
 
-                        {
-
-                            if (errorShown)
-
-                            {
-
+                            if (errorShown){
                                 return;
-
                             }
-
-
 
                             DiscoveryQueueModal.Dismiss();
 
@@ -74,17 +50,11 @@
 
 
 
-                    request.fail(function()
-
-                        {
+                    request.fail(function(){
 
                             errorShown = true;
 
-
-
                             setTimeout(() => GenerateQueue(queueNumber - 1), 1000);
-
-
 
                             DiscoveryQueueModal.Dismiss();
 
@@ -92,32 +62,18 @@
 
                         });
 
-
-
                     requests.push(request);
-
                 }
 
 
 
-                jQuery.when.apply(jQuery, requests).done(function()
-
-                    {
+                jQuery.when.apply(jQuery, requests).done(function(){
 
                         DiscoveryQueueModal.Dismiss();
 
-
-
-                        if (queueNumber < 3)
-
-                        {
-
-                            GenerateQueue(queueNumber);
-
-                        } else
-
-                        {
-
+                        if (queueNumber < 3){
+                           GenerateQueue(queueNumber);
+                        } else {
                             DiscoveryQueueModal = ShowConfirmDialog('Готово', 'ваш список просмотренн ' + queueNumber + ' раза', 'Перезагрузить страницу').done(function() {
 
                                 ShowBlockingWaitDialog('Перезагрузка страницы');
@@ -125,18 +81,12 @@
                                 window.location.reload();
 
                             });
-
                         }
-
                     });
 
-            }).fail(function()
-
-            {
+            }).fail(function(){
 
                 setTimeout(() => GenerateQueue(queueNumber - 1), 1000);
-
-
 
                 DiscoveryQueueModal.Dismiss();
 
@@ -164,12 +114,7 @@
 
     var button = document.getElementById('js-cheat-queue');
 
-
-
-    button.addEventListener('click', function()
-
-        {
-
+    button.addEventListener('click', function(){
             GenerateQueue(0);
 
         }, false);
