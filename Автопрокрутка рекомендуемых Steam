@@ -7,165 +7,170 @@
 // @match        https://store.steampowered.com/explore
 // @grant        none
 // ==/UserScript==
-
 (function() {
     'use strict';
 
-    var DiscoveryQueueModal, GenerateQueue = function( queueNumber )
+    var DiscoveryQueueModal, GenerateQueue = function(queueNumber)
 
-{
+    {
 
-if( DiscoveryQueueModal )
+        if (DiscoveryQueueModal)
 
-{
+        {
 
-DiscoveryQueueModal.Dismiss();
+            DiscoveryQueueModal.Dismiss();
 
-}
+        }
 
 
 
-DiscoveryQueueModal = ShowBlockingWaitDialog( 'Создание списка...', 'Просмотр рекомендуемых #' + ++queueNumber );
+        DiscoveryQueueModal = ShowBlockingWaitDialog('Создание списка...', 'Просмотр рекомендуемых #' + ++queueNumber);
 
 
 
-jQuery.post( 'https://store.steampowered.com/explore/generatenewdiscoveryqueue', { sessionid: g_sessionID, queuetype: 0 } ).done( function( data )
+        jQuery.post('https://store.steampowered.com/explore/generatenewdiscoveryqueue', {
+            sessionid: g_sessionID,
+            queuetype: 0
+        }).done(function(data)
 
-{
+            {
 
-var requests = [], done = 0, errorShown;
+                var requests = [],
+                    done = 0,
+                    errorShown;
 
 
 
-for( var i = 0; i < data.queue.length; i++ )
+                for (var i = 0; i < data.queue.length; i++)
 
-{
+                {
 
-var request = jQuery.post( 'https://store.steampowered.com/app/10', { appid_to_clear_from_queue: data.queue[ i ], sessionid: g_sessionID } );
+                    var request = jQuery.post('https://store.steampowered.com/app/10', {
+                        appid_to_clear_from_queue: data.queue[i],
+                        sessionid: g_sessionID
+                    });
 
 
 
-request.done( function()
+                    request.done(function()
 
-{
+                        {
 
-if( errorShown )
+                            if (errorShown)
 
-{
+                            {
 
-return;
+                                return;
 
-}
+                            }
 
 
 
-DiscoveryQueueModal.Dismiss();
+                            DiscoveryQueueModal.Dismiss();
 
-DiscoveryQueueModal = ShowBlockingWaitDialog( 'Изучение Вашего списка...', 'Запрос ' + ++done + ' из ' + data.queue.length );
+                            DiscoveryQueueModal = ShowBlockingWaitDialog('Изучение вашего списка...', 'Запрос ' + ++done + ' из ' + data.queue.length);
 
-} );
+                        });
 
 
 
-request.fail( function()
+                    request.fail(function()
 
-{
+                        {
 
-errorShown = true;
+                            errorShown = true;
 
 
 
-setTimeout( () => GenerateQueue( queueNumber - 1 ), 1000 );
+                            setTimeout(() => GenerateQueue(queueNumber - 1), 1000);
 
 
 
-DiscoveryQueueModal.Dismiss();
+                            DiscoveryQueueModal.Dismiss();
 
-DiscoveryQueueModal = ShowConfirmDialog( 'Ошибка', 'Не удалось очистить Ваш список  #' + ++done + '. Повторяю попытку через секунду.', 'Попробовать еще раз' );
+                            DiscoveryQueueModal = ShowConfirmDialog('Ошибка', 'Не удалось очистить ваш список  #' + ++done + '. Повторяю попытку через секунду.', 'Попробовать еще раз');
 
-} );
+                        });
 
 
 
-requests.push( request );
+                    requests.push(request);
 
-}
+                }
 
 
 
-jQuery.when.apply( jQuery, requests ).done( function()
+                jQuery.when.apply(jQuery, requests).done(function()
 
-{
+                    {
 
-DiscoveryQueueModal.Dismiss();
+                        DiscoveryQueueModal.Dismiss();
 
 
 
-if( queueNumber < 3 )
+                        if (queueNumber < 3)
 
-{
+                        {
 
-GenerateQueue( queueNumber );
+                            GenerateQueue(queueNumber);
 
-}
+                        } else
 
-else
+                        {
 
-{
+                            DiscoveryQueueModal = ShowConfirmDialog('Готово', 'ваш список просмотренн ' + queueNumber + ' раза', 'Перезагрузить страницу').done(function() {
 
-DiscoveryQueueModal = ShowConfirmDialog( 'Готово', 'Ваш список просмотренн ' + queueNumber + ' раза', 'Перезагрузить страницу' ).done( function() {
+                                ShowBlockingWaitDialog('Перезагрузка страницы');
 
-ShowBlockingWaitDialog( 'Перезагрузка страницы' );
+                                window.location.reload();
 
-window.location.reload();
+                            });
 
-});
+                        }
 
-}
+                    });
 
-} );
+            }).fail(function()
 
-} ).fail( function()
+            {
 
-{
+                setTimeout(() => GenerateQueue(queueNumber - 1), 1000);
 
-setTimeout( () => GenerateQueue( queueNumber - 1 ), 1000 );
 
 
+                DiscoveryQueueModal.Dismiss();
 
-DiscoveryQueueModal.Dismiss();
+                DiscoveryQueueModal = ShowBlockingWaitDialog('Ошибка', 'Не удалось очистить ваш список #' + queueNumber + '. Повторяю попытку через секунду.');
 
-DiscoveryQueueModal = ShowBlockingWaitDialog( 'Ошибка', 'Не удалось очистить Ваш список #' + queueNumber + '. Повторяю попытку через секунду.' );
+            });
 
-} );
+    };
 
-};
 
 
+    var buttonContainer = document.createElement('div');
 
-var buttonContainer = document.createElement( 'div' );
+    buttonContainer.className = 'discovery_queue_customize_ctn';
 
-buttonContainer.className = 'discovery_queue_customize_ctn';
+    buttonContainer.innerHTML = '<div class="btnv6_blue_hoverfade btn_medium" id="js-cheat-queue"><span>Обмануть ваш список</span></div><span>Система сама просмотрет быстро 3 раза рекомендуемые.</span>';
 
-buttonContainer.innerHTML = '<div class="btnv6_blue_hoverfade btn_medium" id="js-cheat-queue"><span>Обмануть Ваш список</span></div><span>Система сама просмотрет быстро 3 раза рекомендуемые.</span>';
 
 
+    var container = document.querySelector('.discovery_queue_customize_ctn');
 
-var container = document.querySelector( '.discovery_queue_customize_ctn' );
+    container.parentNode.insertBefore(buttonContainer, container);
 
-container.parentNode.insertBefore( buttonContainer, container );
 
 
+    var button = document.getElementById('js-cheat-queue');
 
-var button = document.getElementById( 'js-cheat-queue' );
 
 
+    button.addEventListener('click', function()
 
-button.addEventListener( 'click', function( )
+        {
 
-{
+            GenerateQueue(0);
 
-GenerateQueue( 0 );
-
-}, false );
+        }, false);
 })();
