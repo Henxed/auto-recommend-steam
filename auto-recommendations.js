@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Автопрокрутка рекомендуемых
-// @namespace    https://nan
+// @namespace    https://gist.github.com/Henxed/3799a8d187dd3e36a3a51cbc1ae498c7
 // @version      0.1
 // @description  Переходи сюды https://store.steampowered.com/explore и нажимаем "Обмануть очередь"
-// @author       NaN
+// @author       Перевел Henxed
 // @match        https://store.steampowered.com/explore
 // @grant        none
 // ==/UserScript==
