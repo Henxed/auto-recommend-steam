@@ -25,7 +25,7 @@ DiscoveryQueueModal.Dismiss();
 
 
 
-DiscoveryQueueModal = ShowBlockingWaitDialog( 'Создание очереди...', 'Просмотр рекомендуемых #' + ++queueNumber );
+DiscoveryQueueModal = ShowBlockingWaitDialog( 'Создание списка...', 'Просмотр рекомендуемых #' + ++queueNumber );
 
 
 
@@ -61,7 +61,7 @@ return;
 
 DiscoveryQueueModal.Dismiss();
 
-DiscoveryQueueModal = ShowBlockingWaitDialog( 'Изучение очереди...', 'Запрос ' + ++done + ' из ' + data.queue.length );
+DiscoveryQueueModal = ShowBlockingWaitDialog( 'Изучение Вашего списка...', 'Запрос ' + ++done + ' из ' + data.queue.length );
 
 } );
 
@@ -81,7 +81,7 @@ setTimeout( () => GenerateQueue( queueNumber - 1 ), 1000 );
 
 DiscoveryQueueModal.Dismiss();
 
-DiscoveryQueueModal = ShowConfirmDialog( 'Ошибка', 'Не удалось очистить очередь  #' + ++done + '. Повторяю попытку через секунду.', 'Попробовать еще раз' );
+DiscoveryQueueModal = ShowConfirmDialog( 'Ошибка', 'Не удалось очистить Ваш список  #' + ++done + '. Повторяю попытку через секунду.', 'Попробовать еще раз' );
 
 } );
 
@@ -113,9 +113,9 @@ else
 
 {
 
-DiscoveryQueueModal = ShowConfirmDialog( 'Готово', 'Очередь просмотренна ' + queueNumber + ' раза', 'Перезагрузить страницу' ).done( function() {
+DiscoveryQueueModal = ShowConfirmDialog( 'Готово', 'Ваш список просмотренн ' + queueNumber + ' раза', 'Перезагрузить страницу' ).done( function() {
 
-ShowBlockingWaitDialog( 'Reloading the page' );
+ShowBlockingWaitDialog( 'Перезагрузка страницы' );
 
 window.location.reload();
 
@@ -135,7 +135,7 @@ setTimeout( () => GenerateQueue( queueNumber - 1 ), 1000 );
 
 DiscoveryQueueModal.Dismiss();
 
-DiscoveryQueueModal = ShowBlockingWaitDialog( 'Ошибка', 'Не удалось очистить очередь #' + queueNumber + '. Повторяю попытку через секунду.' );
+DiscoveryQueueModal = ShowBlockingWaitDialog( 'Ошибка', 'Не удалось очистить Ваш список #' + queueNumber + '. Повторяю попытку через секунду.' );
 
 } );
 
@@ -147,7 +147,7 @@ var buttonContainer = document.createElement( 'div' );
 
 buttonContainer.className = 'discovery_queue_customize_ctn';
 
-buttonContainer.innerHTML = '<div class="btnv6_blue_hoverfade btn_medium" id="js-cheat-queue"><span>Обмануть очередь</span></div><span>Система сама просмотрет быстро 3 раза рекомендуемые.</span>';
+buttonContainer.innerHTML = '<div class="btnv6_blue_hoverfade btn_medium" id="js-cheat-queue"><span>Обмануть Ваш список</span></div><span>Система сама просмотрет быстро 3 раза рекомендуемые.</span>';
 
 
 
