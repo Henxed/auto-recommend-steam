@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Автопрокрутка рекомендуемых
 // @namespace       https://github.com/Henxed/auto-recommend-steam
-// @version         0.1.3
+// @version         0.1.3.1
 // @downloadURL     https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend.user.js
 // @updateURL       https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend.user.js
 // @description     Переходи сюды https://store.steampowered.com/explore и нажимаем "Обмануть ваш список"
@@ -47,7 +47,7 @@
 
                             DiscoveryQueueModal.Dismiss();
 
-                            DiscoveryQueueModal = ShowBlockingWaitDialog('Изучение вашего списка...', 'Запрос ' + ++done + ' из ' + data.queue.length);
+                            DiscoveryQueueModal = ShowBlockingWaitDialog('Изучаю ваш список...', 'Запрос ' + ++done + ' из ' + data.queue.length);
 
                         });
 
@@ -77,7 +77,7 @@
                         if (queueNumber < 3){
                            GenerateQueue(queueNumber);
                         } else {
-                            DiscoveryQueueModal = ShowConfirmDialog('Готово', 'ваш список просмотренн ' + queueNumber + ' раза', 'Перезагрузить страницу').done(function() {
+                            DiscoveryQueueModal = ShowConfirmDialog('Готово', 'Ваш список просмотрен ' + queueNumber + ' раза', 'Перезагрузить страницу').done(function() {
 
                                 ShowBlockingWaitDialog('Перезагрузка страницы');
 
@@ -105,7 +105,7 @@
 
     buttonContainer.className = 'discovery_queue_customize_ctn';
 
-    buttonContainer.innerHTML = '<div class="btnv6_blue_hoverfade btn_medium" id="js-cheat-queue"><span>Обмануть ваш список</span></div><span>Система сама просмотрет быстро 3 раза рекомендуемые.</span>';
+    buttonContainer.innerHTML = '<div class="btnv6_blue_hoverfade btn_medium" id="js-cheat-queue"><span>Просмотреть список</span></div><span>Система сама просмотрет быстро 3 раза рекомендуемые игры.</span>';
 
 
 
