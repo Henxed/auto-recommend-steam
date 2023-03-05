@@ -11,7 +11,7 @@
 - [Для **Safari**](https://safari-extensions.apple.com/details/?id=net.tampermonkey.safari-G3XV72R5TC)
 
 
-2. Теперь [устанавливаем](https://github.com/Henxed/auto-recommend-steam/blob/master/autorecommend-RU.user.js) наш скрипт
+2. Теперь [устанавливаем]https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend-RU.user.js) наш скрипт
 3. Через *_браузер_* заходим на steam страницу: https://store.steampowered.com/explore 
 4. Выбираем сколько раз "просмотреть". (по умолчанию 1 раз)
 5. И нажимаем "Обмануть список"
@@ -29,7 +29,7 @@ Browse through the Steam "Recommended" list for card drops during sales. Since b
     - [For **Edge**](https://www.microsoft.com/ru-ru/p/tampermonkey/9nblggh5162s)
     - [For **Safari**](https://safari-extensions.apple.com/details/?id=net.tampermonkey.safari-G3XV72R5TC)
 
-2. Now [install](https://github.com/Henxed/auto-recommend-steam/blob/master/autorecommend-EN.user.js) our script.
+2. Now [install](https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend-EN.user.js) our script.
 3. Using your *_browser_*, go to the Steam page: https://store.steampowered.com/explore
 4. Choose how many times you want to "view" the list (default is 1).
 5. Click "Trick your list".
