@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name            Автопрокрутка рекомендуемых
+// @name            Steam автопрокрутка списка рекомендуемых игр
 // @namespace       https://github.com/Henxed/auto-recommend-steam
 // @version         0.2
-// @downloadURL     https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend.user.js
-// @updateURL       https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend.user.js
+// @downloadURL     https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend-RU.user.js
+// @updateURL       https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend-RU.user.js
 // @description     Переходи сюды https://store.steampowered.com/explore и нажимаем "Обмануть ваш список"
 // @author          Henxed
 // @include         https://store.steampowered.com/explore
