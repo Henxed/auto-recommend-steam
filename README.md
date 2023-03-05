@@ -11,7 +11,7 @@
 - [Для **Safari**](https://safari-extensions.apple.com/details/?id=net.tampermonkey.safari-G3XV72R5TC)
 
 
-2. Теперь [устанавливаем]https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend-RU.user.js) наш скрипт
+2. Теперь [устанавливаем](https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend-RU.user.js) наш скрипт
 3. Через *_браузер_* заходим на steam страницу: https://store.steampowered.com/explore 
 4. Выбираем сколько раз "просмотреть". (по умолчанию 1 раз)
 5. И нажимаем "Обмануть список"
