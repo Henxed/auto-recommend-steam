@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Автопрокрутка рекомендуемых
 // @namespace       https://github.com/Henxed/auto-recommend-steam
-// @version         0.1.3.1
+// @version         0.2
 // @downloadURL     https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend.user.js
 // @updateURL       https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend.user.js
 // @description     Переходи сюды https://store.steampowered.com/explore и нажимаем "Обмануть ваш список"
@@ -13,7 +13,14 @@
 // @unwrap
 // ==/UserScript==
 (function() {
-    var DiscoveryQueueModal, GenerateQueue = function(queueNumber){
+    var DiscoveryQueueModal,
+        GenerateQueue = function(queueNumber){
+
+        var queueNumberMax = parseInt(document.getElementById("queue-number").value);
+        if (queueNumberMax <= 0) {
+          alert("Введите корректное значение");
+          return;
+        }
 
         if (DiscoveryQueueModal){
             DiscoveryQueueModal.Dismiss();
@@ -37,8 +44,6 @@
                         sessionid: g_sessionID
                     });
 
-
-
                     request.done(function(){
 
                             if (errorShown){
@@ -50,8 +55,6 @@
                             DiscoveryQueueModal = ShowBlockingWaitDialog('Изучаю ваш список...', 'Запрос ' + ++done + ' из ' + data.queue.length);
 
                         });
-
-
 
                     request.fail(function(){
 
@@ -68,13 +71,11 @@
                     requests.push(request);
                 }
 
-
-
                 jQuery.when.apply(jQuery, requests).done(function(){
 
                         DiscoveryQueueModal.Dismiss();
 
-                        if (queueNumber < 3){
+                        if (queueNumber < queueNumberMax){
                            GenerateQueue(queueNumber);
                         } else {
                             DiscoveryQueueModal = ShowConfirmDialog('Готово', 'Ваш список просмотрен ' + queueNumber + ' раза', 'Перезагрузить страницу').done(function() {
@@ -93,32 +94,21 @@
 
                 DiscoveryQueueModal.Dismiss();
 
-                DiscoveryQueueModal = ShowBlockingWaitDialog('Ошибка', 'Не удалось очистить ваш список #' + queueNumber + '. Повторяю попытку через секунду.');
+                DiscoveryQueueModal = ShowBlockingWaitDialog('Ошибка', 'Не удалось очистить ваш список #' + queueNumber + '. Повторю попытку через секунду.');
 
             });
 
     };
 
-
-
     var buttonContainer = document.createElement('div');
-
     buttonContainer.className = 'discovery_queue_customize_ctn';
-
-    buttonContainer.innerHTML = '<div class="btnv6_blue_hoverfade btn_medium" id="js-cheat-queue"><span>Просмотреть список</span></div><span>Система сама просмотрет быстро 3 раза рекомендуемые игры.</span>';
-
-
+    buttonContainer.innerHTML = '<div class="btnv6_blue_hoverfade btn_medium" id="js-cheat-queue"><span>Обмануть ваш список</span></div> рекомендуемых игр в количестве: <span class="input gray_bevel"><input type="number" id="queue-number" min="1" step="1" value="1" /></span> очень быстро';
 
     var container = document.querySelector('.discovery_queue_customize_ctn');
-
     container.parentNode.insertBefore(buttonContainer, container);
 
-
-
     var button = document.getElementById('js-cheat-queue');
-
     button.addEventListener('click', function(){
             GenerateQueue(0);
-
-        }, false);
+    }, false);
 })();
