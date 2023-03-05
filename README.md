@@ -14,7 +14,7 @@
 2. Теперь [устанавливаем](https://vk.cc/8cXNGq) наш скрипт
 3. Через *_браузер_* заходим на steam страницу: https://store.steampowered.com/explore 
 4. Выбираем сколько раз "просмотреть". (по умолчанию 1 раз)
-5. И нажимаем "Просмотреть список"
+5. И нажимаем "Обмануть список"
 
 ---
 
@@ -32,4 +32,4 @@ Browse through the Steam "Recommended" list for card drops during sales. Since b
 2. Now [install](https://vk.cc/8cXNGq) our script.
 3. Using your *_browser_*, go to the Steam page: https://store.steampowered.com/explore
 4. Choose how many times you want to "view" the list (default is 1).
-5. Click "View List".
+5. Click "Trick your list".
