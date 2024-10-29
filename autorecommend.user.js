@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name            Steam автопрокрутка списка рекомендуемых игр (Multi-languages) | Steam Recommended Auto-Skip
+// @name            Steam автопрокрутка списка рекомендуемых игр (Multi-languages) | Steam Recommended Auto-Skip (Multi-languages)
 // @namespace       https://github.com/Henxed/auto-recommend-steam
-// @version         0.3
-// @downloadURL     https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend-RU.user.js
-// @updateURL       https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend-RU.user.js
+// @version         0.3.1
+// @downloadURL     https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend.user.js
+// @updateURL       https://github.com/Henxed/auto-recommend-steam/raw/master/autorecommend.user.js
 // @description     Переходи сюды https://store.steampowered.com/explore и нажимаем "Обмануть ваш список"
 // @author          Henxed
 // @include         https://store.steampowered.com/explore
